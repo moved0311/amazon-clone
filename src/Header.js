@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.div`
   height: 60px;
@@ -69,9 +70,11 @@ const CountNumber = styled.span`
 function Header() {
   return (
     <HeaderContainer>
-      <HeaderLogo>
-        <img src="/images/amazon_logo.png" />
-      </HeaderLogo>
+      <Link to="/">
+        <HeaderLogo>
+          <img src="/images/amazon_logo.png" alt="error" />
+        </HeaderLogo>
+      </Link>
       <HeaderSearch>
         <SearchInput />
         <HeaderSearchIcon />
@@ -91,7 +94,9 @@ function Header() {
         </HeaderOption>
         <BasketOption>
           <OptionLineOne>
-            <HeaderBasketIcon />
+            <Link to="/checkout">
+              <HeaderBasketIcon />
+            </Link>
           </OptionLineOne>
           <OptionLineTwo>
             <CountNumber> 0</CountNumber>
