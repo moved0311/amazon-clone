@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Subtotal from "./Subtotal";
+import CheckoutProduct from "./CheckoutProduct";
+import { useStateValue } from "./StateProvider";
 
 const Container = styled.div`
   display: flex;
@@ -22,11 +24,15 @@ const Title = styled.h2`
 const Right = styled.div``;
 
 function Checkout() {
+  const [{ basket }] = useStateValue();
   return (
     <Container>
       <Left>
         <img src="/images/ad.jpg" alt="error" />
         <Title>Your shopping Basket</Title>
+        {basket.map((item, idx) => (
+          <CheckoutProduct {...item} key={idx}></CheckoutProduct>
+        ))}
       </Left>
       <Right>
         <Subtotal />

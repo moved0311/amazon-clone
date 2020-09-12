@@ -34,7 +34,7 @@ const Button = styled.button`
 
 function Subtotal() {
   const [{ basket }] = useStateValue();
-  const total = basket.reduce((acc, { price }) => (acc += price), 0);
+  const total = basket.reduce((acc, { price }) => acc + price, 0);
 
   return (
     <Container>
@@ -42,7 +42,7 @@ function Subtotal() {
         renderText={(value) => (
           <>
             <p>
-              Subtotal ({basket?.length} items): <strong>{total}</strong>
+              Subtotal ({basket?.length} items): <strong>{value}</strong>
             </p>
             <Small>
               <input type="checkbox" /> This order contains a gift
@@ -50,7 +50,7 @@ function Subtotal() {
           </>
         )}
         decimalScale={2}
-        value={0}
+        value={total}
         displayType={"text"}
         thousandSeparator={true}
         prefix={"$"}
