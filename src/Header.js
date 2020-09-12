@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SearchIcon from "@material-ui/icons/Search";
 import ShoppingBasketIcon from "@material-ui/icons/ShoppingBasket";
 import { Link } from "react-router-dom";
+import { useStateValue } from "./StateProvider";
 
 const HeaderContainer = styled.div`
   height: 60px;
@@ -68,6 +69,8 @@ const CountNumber = styled.span`
 `;
 
 function Header() {
+  const [{ basket }] = useStateValue();
+
   return (
     <HeaderContainer>
       <Link to="/">
@@ -99,7 +102,7 @@ function Header() {
             </Link>
           </OptionLineOne>
           <OptionLineTwo>
-            <CountNumber> 0</CountNumber>
+            <CountNumber> {basket?.length}</CountNumber>
           </OptionLineTwo>
         </BasketOption>
       </HeaderNav>
